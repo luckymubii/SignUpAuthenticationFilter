@@ -41,7 +41,7 @@ public class DbConnection {
 
             int noOfRowsInserted = preparedStatement.executeUpdate();
             if(noOfRowsInserted>0){
-                System.out.println(noOfRowsInserted + " rows inserted!");
+                System.out.println(noOfRowsInserted + " rows inserted Successfully!");
             }
         } catch (SQLException e) {
             e.printStackTrace();
