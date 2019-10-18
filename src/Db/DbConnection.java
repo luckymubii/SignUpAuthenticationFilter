@@ -24,7 +24,7 @@ public class DbConnection {
         }
     }
 
-    public void insertData(String firstname,String lastname,String phonenumber,String email,String addressline1,String addressline2,String city,String state,int zipcode){
+    public int insertData(String firstname,String lastname,String phonenumber,String email,String addressline1,String addressline2,String city,String state,int zipcode){
         try {
             String sqlQuery = "INSERT INTO student(firstname,lastname,phonenumber,email,addressline1,addressline2,city,state,zipcode) VALUES(?,?,?,?,?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
@@ -42,10 +42,13 @@ public class DbConnection {
             int noOfRowsInserted = preparedStatement.executeUpdate();
             if(noOfRowsInserted>0){
                 System.out.println(noOfRowsInserted + " rows inserted Successfully!");
+                return noOfRowsInserted;
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            return 0;
         }
+        return  0;
     }
     public void update(String username,String password,String firstname,String lastname,String dofbirth,String emailaddress,String username1){
         try {
@@ -64,6 +67,7 @@ public class DbConnection {
             int noOfRowsInserted = preparedStatement.executeUpdate();
             if(noOfRowsInserted>0){
                 System.out.println(noOfRowsInserted + " rows inserted!");
+
             }
         } catch (SQLException e) {
             e.printStackTrace();

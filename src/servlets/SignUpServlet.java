@@ -2,6 +2,7 @@ package servlets;
 
 import Db.DbConnection;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,12 +28,26 @@ public class SignUpServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         DbConnection obj = new DbConnection();
 
-        obj.insertData(firstname,lastname,phonenumber,email,addressline1,addressline2,city,state,zipcode);
+        int result=obj.insertData(firstname,lastname,phonenumber,email,addressline1,addressline2,city,state,zipcode);
+        System.out.println(result);
+
+        if(result>0){
+            out.write("Data Inserted Successfully");
+
+        }
+        else{
+            out.write("OOPs Data not Inserted");
+
+
+
+        }
 
 
 
 
-        out.write("Record Saved");
+
+
+
 
 
     }

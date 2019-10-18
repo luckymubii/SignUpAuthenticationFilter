@@ -28,28 +28,22 @@ System.out.println("in Auth Filter");
         String city = request.getParameter("city");
         String state = request.getParameter("state");
         String zip = request.getParameter("zipcode");
+        PrintWriter res=response.getWriter();
        // int zipcode=Integer.parseInt(zip);
         if(firstname.equals("")||lastname.equals("")||phonenumber.equals("")||email.equals("")||addressline1.equals("")
         ||city.equals("")||state.equals("")||zip.equals("")){
             RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-         PrintWriter res=response.getWriter();
+
 
             res.write("<p style='color:blue;text-align:center;'><i>Please Enter All the Field Address line 2 is optional</i></p>");
-
             dispatcher.include(request,response);
-
-
         }
-
         else {
-
             chain.doFilter(request, response);
         }
-
     }
 
     public void init(FilterConfig config) throws ServletException {
-
     }
 
 }
